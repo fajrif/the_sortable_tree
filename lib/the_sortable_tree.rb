@@ -7,11 +7,11 @@ module TheSortableTree
     def self.included(base)
       base.class_eval do
         if Rails::VERSION::MAJOR == 3
-          scope :nested_set,          order('lft ASC')
-          scope :reversed_nested_set, order('lft DESC')
+          scope :nested_set,          order_by('lft ASC')
+          scope :reversed_nested_set, order_by('lft DESC')
         elsif Rails::VERSION::MAJOR == 4
-          scope :nested_set,          lambda { order('lft ASC')  }
-          scope :reversed_nested_set, lambda { order('lft DESC') }
+          scope :nested_set,          lambda { order_by('lft ASC')  }
+          scope :reversed_nested_set, lambda { order_by('lft DESC') }
         else
           puts "[TheSortableTree] ERROR: required Rails 3 or Rails 4"
         end
